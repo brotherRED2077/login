@@ -17,7 +17,7 @@ class Header extends Component {
                 <Navbar>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            Movie App
+                            Lost And Found
                         </Navbar.Brand>
                     </Navbar.Header>
                     <Nav>
@@ -26,9 +26,6 @@ class Header extends Component {
                         </LinkContainer>
                     </Nav>
                 </Navbar>
-                <header className="App-header">
-                    <h1 className="App-title">{(this.props.selectedMovie ? this.props.selectedMovie.title : '')}</h1>
-                </header>
             </div>
 
         );
@@ -43,4 +40,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default withRouter(connect(mapStateToProps)(MovieHeader));
+export default withRouter(connect(mapStateToProps)(Header));
