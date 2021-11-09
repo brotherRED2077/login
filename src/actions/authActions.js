@@ -1,5 +1,5 @@
 import actionTypes from '../constants/actionTypes';
-import runtimeEnv from '@mars/heroku-js-runtime-env';
+var REACT_APP_API_URL= '54.221.141.54';
 
 function userLoggedIn(username){
     return {
@@ -15,9 +15,9 @@ function logout(){
 }
 
 export function submitLogin(data){
-    const env = runtimeEnv();
+    
     return dispatch => {
-        return fetch(`${env.REACT_APP_API_URL}/signin`, {
+        return fetch(`{REACT_APP_API_URL}/signin`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -33,7 +33,7 @@ export function submitLogin(data){
             })
             .then( (res) => {
                 localStorage.setItem('username', data.username);
-                localStorage.setItem('token', res.token);
+                //localStorage.setItem('token', res.token);
 
                 dispatch(userLoggedIn(data.username));
             })
@@ -42,9 +42,8 @@ export function submitLogin(data){
 }
 
 export function submitRegister(data){
-    const env = runtimeEnv();
     return dispatch => {
-        return fetch(`${env.REACT_APP_API_URL}/signup`, {
+        return fetch(`${REACT_APP_API_URL}/signup`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -69,7 +68,7 @@ export function submitRegister(data){
 export function logoutUser() {
     return dispatch => {
         localStorage.removeItem('username');
-        localStorage.removeItem('token');
+        //localStorage.removeItem('token');
         dispatch(logout());
     }
 }
